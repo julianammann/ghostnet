@@ -10,39 +10,14 @@
 </h:head>
 <h:body>
    <h:form>
-      <h2>Wie ist dein Name</h2>
-      <label for="firstname">Vorname</label>
-      <h:inputText id="firstname"
-                   value="#{reporter.firstname}"/>
-      <label for="lastname">Nachname</label>
-      <h:inputText id="lastname"
-                   value="#{reporter.lastname}"/>
-      <h2>Wie ist deine Telfonnummer</h2>
-      <label for="phoneNumber">Telefonnummer</label>
-      <h:inputText id="phoneNumber"
-                   value="#{reporter.phoneNumber}"/>
-      <h2>Wo haben Sie das Geisternetz gefunden?</h2>
-      <label for="lat">Latitude Koordinaten</label>
-      <h:inputText id="lat"
-                   value="#{ghostNet.latitude}"/>
-      <label for="lat">Longitude Koordinaten</label>
-      <h:inputText id="long"
-                   value="#{ghostNet.longitude}"/>
-      <h2>Wie groß ist das Geisternetz?</h2>
-      <label for="estimatedSize">Größe</label>
-      <h:inputText id="estimatedSize"
-                   value="#{ghostNet.estimatedSize}"/>
-
-      <br />
-      <h:commandButton id="submit" value="Submit"
-                       action="response" />
-
+      <h:outputLabel value="ID:" for="id"/>
+      <h:outputText id="id" value="#{appController.ghostNet.id}"/>
+      <h:outputLabel value="lat:" for="lat"/>
+      <h:inputText id="lat" value="#{appController.ghostNet.latitude}" size="40"/>
+      <h:outputLabel value="long: " for="long"/>
+      <h:inputText id="long" value="#{appController.ghostNet.longitude}" size="40"/>
+      <h:outputLabel value="estimatedSize" for="estimatedSize"/>
+      <h:inputText id="estimatedSize" value="#{appController.ghostNet.estimatedSize}" size="40" />
    </h:form>
-   <div class="messagecolor">
-      <h:messages showSummary="true"
-                  showDetail="false"
-                  errorStyle="color: #d20005"
-                  infoStyle="color: blue"/>
-   </div>
 </h:body>
 </html>

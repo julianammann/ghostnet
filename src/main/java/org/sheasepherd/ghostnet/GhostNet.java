@@ -2,17 +2,39 @@ package org.sheasepherd.ghostnet;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @SessionScoped
 @Named
+@Entity
 public class GhostNet implements Serializable {
 
+    @Id
+    @GeneratedValue
+    private int id;
     private double latitude;
     private double longitude;
     private String estimatedSize;
     private String state;
+
+    public GhostNet() {}
+
+    public GhostNet(double latitude, double longitude, String estimatedSize)
+    {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.estimatedSize = estimatedSize;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setEstimatedSize(String estimatedSize) {
         this.estimatedSize = estimatedSize;
