@@ -16,7 +16,7 @@ import java.util.List;
 public class App implements Serializable {
 
     private static App instance;
-    private EntityManagerFactory entityManagerFactory;
+    private final EntityManagerFactory entityManagerFactory;
 
     public App() {
         instance = this;
@@ -32,6 +32,7 @@ public class App implements Serializable {
         if ( instance == null ) instance = new App();
         return instance;
     }
+
 
     public List<GhostNet> getGhostNets()
     {
@@ -70,10 +71,21 @@ public class App implements Serializable {
     private List<GhostNet> populateInitialApp() {
         List<GhostNet> l = new LinkedList<GhostNet>();
         l.add(new GhostNet(45.821044, -10.737615, "200cm"));
-        l.add(new GhostNet(44.872751, -15.916663, "220cm" ));
-        l.add(new GhostNet(39.302288, 5.865443, "900cm" ));
+        l.add(new GhostNet(44.872751, -15.916663, "220cm"));
+        l.add(new GhostNet(39.302288, 5.865443, "900cm"));
         return l;
     }
+
+    private void saveToDb() {
+
+        GhostNet ghostNet = new GhostNet(41.23, -100.123, "10000cm");
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(ghostNet);
+        em.getTransaction().commit();
+        em.close();
+    }
+
 
 
 }

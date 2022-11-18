@@ -12,8 +12,13 @@ public class AppController implements Serializable {
 
     private int index = 0;
 
+    
+
+
     public GhostNet getGhostNet()
     {
         return App.getInstance().getGhostNets().get(index);
     }
+
+
 }

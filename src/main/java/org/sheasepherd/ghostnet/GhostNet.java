@@ -12,14 +12,15 @@ import java.io.Serializable;
 public class GhostNet implements Serializable {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private double latitude;
     private double longitude;
     private String estimatedSize;
     private String state;
 
-    public GhostNet() {}
+    public GhostNet() {
+    }
 
     public GhostNet(double latitude, double longitude, String estimatedSize)
     {
@@ -28,11 +29,11 @@ public class GhostNet implements Serializable {
         this.estimatedSize = estimatedSize;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -67,4 +68,5 @@ public class GhostNet implements Serializable {
     public String getState() {
         return state;
     }
+
 }
