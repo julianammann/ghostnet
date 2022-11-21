@@ -34,6 +34,7 @@
           <element id="library" level="project" name="Maven: org.apache.derby:derbyshared:10.15.2.0" />
           <element id="library" level="project" name="Maven: org.apache.derby:derbyclient:10.15.2.0" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:jakarta:12.0.0" />
+          <element id="library" level="project" name="Maven: org.webjars:bootstrap:5.2.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

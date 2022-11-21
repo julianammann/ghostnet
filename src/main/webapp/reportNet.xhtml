@@ -1,37 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<!--
-  Created by IntelliJ IDEA.
-  User: julianammann
-  Date: 18.11.22
-  Time: 10:59
--->
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:component>
-    <h:form styleClass="row g-3">
-        <h4>Geisternetzdaten:</h4>
-        <div class="col-md-6">
-            <label for="lat" class="form-label">Latitude Koordinaten</label>
-            <h:inputText id="lat" styleClass="form-control" value="#{ghostNet.latitude}"/>
-        </div>
-        <div class="col-md-6">
-            <label for="lat" class="form-label">Longitude Koordinaten</label>
-            <h:inputText id="long" styleClass="form-control" value="#{ghostNet.longitude}"/>
-        </div>
-        <div class="mb-3">
-            <label for="estimatedSize" class="form-label">Größe</label>
-            <h:inputText id="estimatedSize" styleClass="form-control" value="#{ghostNet.estimatedSize}"/>
-        </div>
-        <div class="col-12">
-            <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet()}" styleClass="btn btn-primary">
-                <f:ajax execute="@form" render="ghostNet" />
-            </h:commandButton>
-        </div>
-    </h:form>
-
-</ui:component>
-</html>
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="content">
+        <h:form styleClass="row g-3">
+            <h4>Geisternetzdaten:</h4>
+            <div class="col-md-6">
+                <label for="lat" class="form-label">Latitude Koordinaten</label>
+                <h:inputText id="lat" styleClass="form-control" value="#{ghostNet.latitude}"/>
+            </div>
+            <div class="col-md-6">
+                <label for="lat" class="form-label">Longitude Koordinaten</label>
+                <h:inputText id="long" styleClass="form-control" value="#{ghostNet.longitude}"/>
+            </div>
+            <div class="mb-3">
+                <label for="estimatedSize" class="form-label">Größe</label>
+                <h:inputText id="estimatedSize" styleClass="form-control" value="#{ghostNet.estimatedSize}"/>
+            </div>
+            <div class="col-12">
+                <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet()}"
+                                 styleClass="btn btn-primary">
+                    <f:ajax execute="@form" render="ghostNet"/>
+                </h:commandButton>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

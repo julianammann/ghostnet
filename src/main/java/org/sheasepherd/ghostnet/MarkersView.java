@@ -28,7 +28,9 @@ public class MarkersView implements Serializable {
             List<GhostNet> ghostNets = ghostNetController.allGhostNets();
 
             for(GhostNet g: ghostNets) {
-                simpleModel.addOverlay(new Marker<>(new LatLng(g.getLatitude(), g.getLongitude()), g.getEstimatedSize(), g.getId()));
+                if (g.getState() != "recovered") {
+                    simpleModel.addOverlay(new Marker<>(new LatLng(g.getLatitude(), g.getLongitude()), g.getEstimatedSize(), g.getId()));
+                }
             }
 
         } catch (Exception e) {
