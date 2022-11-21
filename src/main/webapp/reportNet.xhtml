@@ -6,24 +6,24 @@
                 xmlns:p="http://primefaces.org/ui"
 >
     <ui:define name="content">
-        <h:form styleClass="row g-3">
+        <h:form  styleClass="row g-3">
             <h4>Geisternetzdaten:</h4>
             <div class="col-md-6">
                 <label for="lat" class="form-label">Latitude Koordinaten</label>
-                <h:inputText id="lat" styleClass="form-control" value="#{ghostNet.latitude}"/>
+                <h:inputText id="lat" styleClass="form-control" value="#{ghostNetController.ghostNet.latitude}"/>
             </div>
             <div class="col-md-6">
                 <label for="lat" class="form-label">Longitude Koordinaten</label>
-                <h:inputText id="long" styleClass="form-control" value="#{ghostNet.longitude}"/>
+                <h:inputText id="long" styleClass="form-control" value="#{ghostNetController.ghostNet.longitude}"/>
             </div>
             <div class="mb-3">
                 <label for="estimatedSize" class="form-label">Größe</label>
-                <h:inputText id="estimatedSize" styleClass="form-control" value="#{ghostNet.estimatedSize}"/>
+                <h:inputText id="estimatedSize" styleClass="form-control" value="#{ghostNetController.ghostNet.estimatedSize}"/>
             </div>
             <div class="col-12">
-                <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet()}"
+
+                <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet(ghostNetController.ghostNet)}"
                                  styleClass="btn btn-primary">
-                    <f:ajax execute="@form" render="ghostNet"/>
                 </h:commandButton>
             </div>
         </h:form>
