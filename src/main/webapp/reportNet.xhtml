@@ -13,20 +13,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:component>
     <h:form styleClass="row g-3">
-        <h4>Melderdaten:</h4>
-        <div class="col-md-6">
-            <label for="firstname" class="form-label">Vorname</label>
-            <h:inputText id="firstname" styleClass="form-control" value="#{reporter.firstname}"/>
-        </div>
-        <div class="col-md-6">
-            <label for="lastname" class="form-label">Nachname</label>
-            <h:inputText id="lastname" styleClass="form-control" value="#{reporter.lastname}"/>
-        </div>
-        <div class="mb-3">
-            <label for="phoneNumber" class="form-label">Telefonnummer</label>
-            <h:inputText id="phoneNumber" styleClass="form-control" value="#{reporter.phoneNumber}"/>
-        </div>
-        <hr/>
         <h4>Geisternetzdaten:</h4>
         <div class="col-md-6">
             <label for="lat" class="form-label">Latitude Koordinaten</label>
@@ -41,7 +27,9 @@
             <h:inputText id="estimatedSize" styleClass="form-control" value="#{ghostNet.estimatedSize}"/>
         </div>
         <div class="col-12">
-            <h:commandButton id="submit" value="Submit" styleClass="btn btn-primary" action="#{appController.saveToDb()}"/>
+            <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet()}" styleClass="btn btn-primary">
+                <f:ajax execute="@form" render="ghostNet" />
+            </h:commandButton>
         </div>
     </h:form>
 
