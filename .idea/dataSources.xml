@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ghost_net_db@127.0.0.1" uuid="f55ff470-a775-48b8-afad-655d423541aa">
+    <data-source source="LOCAL" name="sun-appserv-samples@127.0.0.1" uuid="8681c2d5-e393-485c-bbda-33037152f7b1">
       <driver-ref>derby.remote</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.apache.derby.jdbc.ClientDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby://127.0.0.1:1527/ghost_net_db</jdbc-url>
+      <jdbc-url>jdbc:derby://127.0.0.1:1527/sun-appserv-samples</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

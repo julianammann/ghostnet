@@ -1,13 +1,9 @@
 package org.sheasepherd.ghostnet;
 
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-@SessionScoped
-@Named
 @Entity
 public class GhostNet implements Serializable {
 

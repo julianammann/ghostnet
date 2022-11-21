@@ -54,9 +54,11 @@
 
 
       <main class="flex-shrink-0 ps-3 pe-3 pt-3">
-         <ui:insert name="reportNet">
-            <ui:include src="reportNet.xhtml"></ui:include>
-         </ui:insert>
+         <h:dataTable value="#{ghostNetController.allGhostNets()}" var="ghostnet">
+            <h:column>#{ghostnet.id}</h:column>
+            <h:column>#{ghostnet.longitude}</h:column>
+            <h:column>#{ghostnet.latitude}</h:column>
+         </h:dataTable>
       </main>
       <ui:insert name="footer">
          <ui:include src="footer.xhtml" />

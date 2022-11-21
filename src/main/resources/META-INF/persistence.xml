@@ -3,16 +3,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-    <persistence-unit name="ghost_net_db">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <persistence-unit name="example" transaction-type="JTA">
         <properties>
-            <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.client.ClientAutoloadedDriver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ghost_net_db
-"/>
-            <property name="jakarta.persistence.jdbc.user" value="ghost_net"/>
-            <property name="jakarta.persistence.jdbc.password" value="derbypass"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/init.sql"/>
+            <property name="eclipselink.logging.level" value="FINEST"/>
         </properties>
     </persistence-unit>
 </persistence>
