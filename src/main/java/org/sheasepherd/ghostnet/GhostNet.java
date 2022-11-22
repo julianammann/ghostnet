@@ -13,21 +13,21 @@ public class GhostNet implements Serializable {
     private double latitude;
     private double longitude;
     private String estimatedSize;
-
     private String state = GhostNetState.Reported.getState();
-
     @Enumerated(EnumType.STRING)
     private GhostNetState ghostNetStateEnum = GhostNetState.Reported;
 
     public GhostNet() {
     }
 
-    public GhostNet(double latitude, double longitude, String estimatedSize)
+    public GhostNet(double latitude, double longitude, String estimatedSize, String state)
     {
         this.latitude = latitude;
         this.longitude = longitude;
         this.estimatedSize = estimatedSize;
+        this.state = state;
     }
+
 
     public long getId() {
         return id;
