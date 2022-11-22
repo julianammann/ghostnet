@@ -11,6 +11,7 @@ import org.primefaces.model.map.Marker;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Named
 @RequestScoped
@@ -28,13 +29,13 @@ public class MarkersView implements Serializable {
             List<GhostNet> ghostNets = ghostNetController.allGhostNets();
 
             for(GhostNet g: ghostNets) {
-                if (g.getState() != "recovered") {
+                if (!Objects.equals(g.getState(), "recovered")) {
                     simpleModel.addOverlay(new Marker<>(new LatLng(g.getLatitude(), g.getLongitude()), g.getEstimatedSize(), g.getId()));
                 }
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
 
