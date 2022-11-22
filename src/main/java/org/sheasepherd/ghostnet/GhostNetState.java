@@ -13,6 +13,11 @@ public enum GhostNetState {
         };
 
         @Override
+        public String getNextState(){
+            return RecoveryImminent.getState();
+        }
+
+        @Override
         public String getState() {
           return "reported";
         };
@@ -24,6 +29,11 @@ public enum GhostNetState {
         };
 
         @Override
+        public String getNextState(){
+            return Recovered.getState();
+        }
+
+        @Override
         public String getState() {
             return "recoveryImminent";
         };
@@ -33,6 +43,10 @@ public enum GhostNetState {
         public GhostNetState nextState() {
             return this;
         };
+        @Override
+        public String getNextState(){
+            return this.getState();
+        }
 
         @Override
         public String getState() {
@@ -45,6 +59,10 @@ public enum GhostNetState {
             return this;
         };
         @Override
+        public String getNextState(){
+            return this.getState();
+        }
+        @Override
         public String getState() {
             return "lost";
         };
@@ -52,4 +70,5 @@ public enum GhostNetState {
 
     public abstract GhostNetState nextState();
     public abstract String getState();
+    public abstract String getNextState();
 }

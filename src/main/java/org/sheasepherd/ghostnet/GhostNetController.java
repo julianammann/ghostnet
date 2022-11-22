@@ -45,6 +45,12 @@ public class GhostNetController {
         this.ghostNet = ghostNet;
     }
 
+    public String updateGhostNetState(GhostNet ghostNet) {
 
+
+
+        return "";
+
+    }
 
 }
