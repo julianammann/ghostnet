@@ -13,7 +13,11 @@ public class GhostNet implements Serializable {
     private double latitude;
     private double longitude;
     private String estimatedSize;
-    private String state;
+
+    private String state = GhostNetState.Reported.getState();
+
+    @Enumerated(EnumType.STRING)
+    private GhostNetState ghostNetStateEnum = GhostNetState.Reported;
 
     public GhostNet() {
     }
@@ -65,4 +69,11 @@ public class GhostNet implements Serializable {
         return state;
     }
 
+    public GhostNetState getGhostNetStateEnum() {
+        return ghostNetStateEnum;
+    }
+
+    public void setGhostNetStateEnum(GhostNetState ghostNetStateEnum) {
+        this.ghostNetStateEnum = ghostNetStateEnum;
+    }
 }
