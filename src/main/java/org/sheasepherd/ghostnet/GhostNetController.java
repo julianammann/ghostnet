@@ -2,8 +2,6 @@ package org.sheasepherd.ghostnet;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -32,7 +30,7 @@ public class GhostNetController {
             ghostNetRepository.save(ghostNet);
             return "index";
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e.getStackTrace());
             return "reportNet";
         }
     }
@@ -45,12 +43,14 @@ public class GhostNetController {
         this.ghostNet = ghostNet;
     }
 
-    public String updateGhostNetState(GhostNet ghostNet) {
+    public String updateGhostNet(GhostNet ghostNet) {
 
 
-
-        return "";
-
+        try {
+            ghostNetRepository.update(ghostNet);
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
+        return "rescueNet.xhtml";
     }
-
 }

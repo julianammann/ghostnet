@@ -54,6 +54,13 @@
             <artifactId>bootstrap</artifactId>
             <version>5.2.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/bootstrap-icons -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>bootstrap-icons</artifactId>
+            <version>1.10.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

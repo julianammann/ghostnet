@@ -18,6 +18,10 @@ public class GhostNetRepository {
         entityManager.persist(g);
     }
 
+    public void update(GhostNet g) {
+        entityManager.merge(g);
+    }
+
     public List<GhostNet> findAll() {
         return entityManager.createQuery("from " + GhostNet.class.getSimpleName() + " g", GhostNet.class).getResultList();
     }
@@ -25,7 +29,6 @@ public class GhostNetRepository {
     public GhostNet getById(Long id) {
         return entityManager.createQuery("from " + GhostNet.class.getSimpleName() + " g where g.id = " + id, GhostNet.class).getSingleResult();
     }
-
 
 
 }

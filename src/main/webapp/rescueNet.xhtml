@@ -6,36 +6,38 @@
                 xmlns:p="http://primefaces.org/ui"
 >
     <ui:define name="content">
-        <h:form  styleClass="row g-3">
-            <h4>Geisternetze</h4>
-            <div class="col-12">
-                <h:dataTable value="#{ghostNetController.allGhostNets()}" var="ghostnet">
-                    <h:column>
-                        <f:facet name="header">ID</f:facet>
-                        <h:outputText value="#{ghostnet.id}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Latitude</f:facet>
-                        <h:outputText value="#{ghostnet.latitude}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Longitude</f:facet>
-                        <h:outputText value="#{ghostnet.longitude}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Status</f:facet>
-                        <h:outputText value="#{ghostnet.state}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Status Aktualisieren</f:facet>
-                        <h:commandButton styleClass="btn btn-primary" id="recov" value="#{ghostnet.ghostNetStateEnum.getNextState()}" action="asd" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Aktionen</f:facet>
-                        <h:commandButton id="submit" value="Submit" action="#{ghostNetController.addGhostNet(ghostNetController.ghostNet)}" styleClass="btn btn-primary" />
-                    </h:column>
-                </h:dataTable>
-            </div>
-        </h:form>
+        <div class="p-3">
+            <h:form styleClass="row g-3">
+                <h4>Geisternetze</h4>
+                <div class="col-12">
+                    <h:dataTable styleClass="table" value="#{ghostNetController.allGhostNets()}" var="ghostnet">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{ghostnet.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Latitude</f:facet>
+                            <p:inputNumber decimalPlaces="6" value="#{ghostnet.latitude}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Longitude</f:facet>
+                            <p:inputNumber decimalPlaces="6" value="#{ghostnet.longitude}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Geschätzte Größe</f:facet>
+                            <h:inputText value="#{ghostnet.estimatedSize}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Status</f:facet>
+                            <h:outputText value="#{ghostnet.state}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Aktionen</f:facet>
+                            <h:commandButton type="submit" styleClass="btn-primary" action="#{ghostNetController.updateGhostNet(ghostnet)}" value="Submit" />
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>
