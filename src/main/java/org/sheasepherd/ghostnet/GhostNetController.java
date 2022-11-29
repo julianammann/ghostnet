@@ -51,6 +51,6 @@ public class GhostNetController {
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
         }
-        return "rescueNet.xhtml";
+        return "ghostNets.xhtml";
     }
 }

@@ -4,14 +4,13 @@
 
 package org.sheasepherd.ghostnet;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 
 @MappedSuperclass
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstname;
     private String lastname;

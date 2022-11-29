@@ -10,7 +10,7 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">GhostNetApp</a>
+                <a class="navbar-brand" href="/ghostnet/">GhostNetApp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -18,14 +18,15 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <h:outputLink class="nav-link active" aria-current="page"
-                                          value="index.xhtml">Home</h:outputLink>
+                            <h:outputLink class="nav-link #{view.viewId eq '/index.xhtml' ? 'active' : ''}" aria-current="page"
+                                          value="/ghostnet/">Home</h:outputLink>
                         </li>
                         <li class="nav-item">
-                            <h:outputLink class="nav-link" value="reportNet.xhtml">Report Ghost Net</h:outputLink>
+                            <h:outputLink class="nav-link #{view.viewId eq '/reportNet.xhtml' ? 'active' : ''}" aria-current="page"
+                                          value="reportNet.xhtml">Geisternetz Melden</h:outputLink>
                         </li>
                         <li class="nav-item">
-                            <h:outputLink class="nav-link" value="rescueNet.xhtml">Rescue Ghost Net</h:outputLink>
+                            <h:outputLink class="nav-link #{view.viewId eq '/ghostNets.xhtml' ? 'active' : ''}" value="ghostNets.xhtml">Geisternetze</h:outputLink>
                         </li>
                     </ul>
                 </div>
