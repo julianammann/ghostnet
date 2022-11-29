@@ -17,6 +17,18 @@ public class GhostNet implements Serializable {
     @Enumerated(EnumType.STRING)
     private GhostNetState ghostNetStateEnum = GhostNetState.Reported;
 
+    private Rescuer rescuer;
+
+    @ManyToOne
+    @JoinColumn(name = "rescuer_id")
+    public Rescuer getRescuer() {
+        return rescuer;
+    }
+
+    public void setRescuer(Rescuer rescuer) {
+        this.rescuer = rescuer;
+    }
+
     public GhostNet() {
     }
 
