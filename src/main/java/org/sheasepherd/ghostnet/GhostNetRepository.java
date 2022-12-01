@@ -25,4 +25,9 @@ public class GhostNetRepository {
     public List<GhostNet> findAll() {
         return entityManager.createQuery("from " + GhostNet.class.getSimpleName() + " g", GhostNet.class).getResultList();
     }
+
+    public GhostNet getGhostNet(long id) {
+        return entityManager.createQuery("from " + GhostNet.class.getSimpleName() + " g WHERE g.id =" + id, GhostNet.class).getSingleResult();
+    }
+
 }

@@ -13,26 +13,39 @@ public class GhostNetController {
 
     @Inject
     GhostNetRepository ghostNetRepository;
+    @Inject
+    RescuerRepository rescuerRepository;
 
     private GhostNet ghostNet;
+    private Rescuer rescuer;
+
+
+    private long selectedNet;
 
     @PostConstruct
     public void init() {
         ghostNet = new GhostNet();
+        rescuer = new Rescuer();
     }
 
     public List<GhostNet> allGhostNets() {
         return ghostNetRepository.findAll();
     }
 
+    public GhostNet getGhostNetByID(long id) {
+        return ghostNetRepository.getGhostNet(id);
+    }
+
+//    public List<GhostNet> selectedGhostNets() { return ghostNetRepository.filterAll(); }
+
     public String addGhostNet(GhostNet ghostNet) {
         try {
             ghostNetRepository.save(ghostNet);
-            return "index";
+           return backToHome();
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
-            return "reportNet";
         }
+        return null;
     }
 
     public GhostNet getGhostNet() {
@@ -43,14 +56,43 @@ public class GhostNetController {
         this.ghostNet = ghostNet;
     }
 
-    public String updateGhostNet(GhostNet ghostNet) {
+    public Rescuer getRescuer() {
+        return rescuer;
+    }
 
+    public void setRescuer(Rescuer rescuer) {
+        this.rescuer = rescuer;
+    }
 
-        try {
+    public String addRescuer(Rescuer rescuer) {
+        try{
+            ghostNet = getGhostNetByID(this.selectedNet);
+            ghostNet.setRescuer(rescuer);
+            String newState = ghostNet.getGhostNetStateEnum().getNextState();
+            ghostNet.setState(newState);
+            ghostNet.setGhostNetStateEnum(ghostNet.getGhostNetStateEnum().nextState());
+            rescuerRepository.save(rescuer);
             ghostNetRepository.update(ghostNet);
+            return backToHome();
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
         }
-        return "ghostNets.xhtml";
+        return null;
+    }
+
+    public long getSelectedNet() {
+        return selectedNet;
+    }
+
+    public void setSelectedNet(long selectedNet) {
+        this.selectedNet = selectedNet;
+    }
+
+    public String rescueNet() {
+        return "rescueNet?faces-redirect=true";
+    }
+
+    public String backToHome() {
+        return "index?faces-redirect=true";
     }
 }

@@ -6,6 +6,9 @@
                 xmlns:p="http://primefaces.org/ui"
 >
     <ui:define name="content">
+        <ui:insert name="ghostNets">
+            <ui:include src="ghostNets.xhtml"/>
+        </ui:insert>
         <f:view contentType="text/html">
             <p:gmap center="41.381542, 2.122893" zoom="3" type="HYBRID" styleClass="vh-100 w-100"
                     model="#{markersView.simpleModel}"/>

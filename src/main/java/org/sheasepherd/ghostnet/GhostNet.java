@@ -42,7 +42,7 @@ public class GhostNet implements Serializable {
 
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -88,4 +88,10 @@ public class GhostNet implements Serializable {
     public void setGhostNetStateEnum(GhostNetState ghostNetStateEnum) {
         this.ghostNetStateEnum = ghostNetStateEnum;
     }
+
+    @Override
+    public String toString() {
+        return "ID:" + id + ", Latitude:" + latitude + ", Longitude:" + longitude + "Size:" + estimatedSize + ", State:" + state;
+    }
+
 }

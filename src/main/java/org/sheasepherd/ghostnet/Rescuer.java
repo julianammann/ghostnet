@@ -8,7 +8,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -31,5 +30,7 @@ public class Rescuer extends Person{
         super(firstname, lastname, phoneNumber);
     }
 
-
+    public String getRescuerName() {
+        return getFirstname() + " " + getLastname();
+    }
 }

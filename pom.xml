@@ -49,6 +49,13 @@
             <version>12.0.0</version>
             <classifier>jakarta</classifier>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>12.0.0</version>
+            <classifier>jakarta</classifier>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -60,7 +67,11 @@
             <artifactId>bootstrap-icons</artifactId>
             <version>1.10.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
