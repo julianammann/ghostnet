@@ -33,6 +33,14 @@ public enum GhostNetState {
             return Recovered.getState();
         }
 
+        public GhostNetState lostState() {
+            return Lost;
+        }
+
+        public String getLostState() {
+            return Lost.getState();
+        }
+
         @Override
         public String getState() {
             return "recoveryImminent";

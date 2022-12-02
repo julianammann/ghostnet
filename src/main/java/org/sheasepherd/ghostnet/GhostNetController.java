@@ -15,10 +15,13 @@ public class GhostNetController {
     GhostNetRepository ghostNetRepository;
     @Inject
     RescuerRepository rescuerRepository;
+    @Inject
+    ReporterRepository reporterRepository;
 
     private GhostNet ghostNet;
     private Rescuer rescuer;
 
+    private Reporter reporter;
 
     private long selectedNet;
 
@@ -26,6 +29,7 @@ public class GhostNetController {
     public void init() {
         ghostNet = new GhostNet();
         rescuer = new Rescuer();
+        reporter = new Reporter();
     }
 
     public List<GhostNet> allGhostNets() {
@@ -64,9 +68,17 @@ public class GhostNetController {
         this.rescuer = rescuer;
     }
 
-    public String addRescuer(Rescuer rescuer) {
-        try{
-            ghostNet = getGhostNetByID(this.selectedNet);
+    public Reporter getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(Reporter reporter) {
+        this.reporter = reporter;
+    }
+
+    public String addRescuer(Rescuer rescuer, long id) {
+        try {
+            ghostNet = getGhostNetByID(id);
             ghostNet.setRescuer(rescuer);
             String newState = ghostNet.getGhostNetStateEnum().getNextState();
             ghostNet.setState(newState);
@@ -80,6 +92,22 @@ public class GhostNetController {
         return null;
     }
 
+    public String addReporter(Reporter reporter, long id) {
+        try {
+            ghostNet = getGhostNetByID(id);
+            ghostNet.setReporter(reporter);
+            ghostNet.setState(GhostNetState.Lost.getState());
+            ghostNet.setGhostNetStateEnum(GhostNetState.Lost);
+            reporterRepository.save(reporter);
+            ghostNetRepository.update(ghostNet);
+            return backToHome();
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
+        return null;
+    }
+
+
     public long getSelectedNet() {
         return selectedNet;
     }
@@ -88,8 +116,33 @@ public class GhostNetController {
         this.selectedNet = selectedNet;
     }
 
-    public String rescueNet() {
-        return "rescueNet?faces-redirect=true";
+    public String rescueNet(long id) {
+        setSelectedNet(id);
+        return "rescueNet?faces-redirect=true&includeViewParams=true";
+    }
+
+    public String reportNet() {
+        return "reportNet?faces-redirect=true";
+    }
+
+    public String lostNet(long id) {
+        setSelectedNet(id);
+        return "lostNet?faces-redirect=true&includeViewParams=true";
+    }
+
+    public String recoverNet(long id) {
+        try {
+            ghostNet = getGhostNetByID(id);
+            String newState = ghostNet.getGhostNetStateEnum().getNextState();
+            ghostNet.setState(newState);
+            ghostNet.setGhostNetStateEnum(ghostNet.getGhostNetStateEnum().nextState());
+            ghostNetRepository.update(ghostNet);
+            return backToHome();
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
+
+        return null;
     }
 
     public String backToHome() {

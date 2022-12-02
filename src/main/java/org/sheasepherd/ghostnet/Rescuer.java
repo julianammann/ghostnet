@@ -30,7 +30,4 @@ public class Rescuer extends Person{
         super(firstname, lastname, phoneNumber);
     }
 
-    public String getRescuerName() {
-        return getFirstname() + " " + getLastname();
-    }
 }

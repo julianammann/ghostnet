@@ -34,7 +34,7 @@
                         <h:column>
                             <f:facet name="header">Bergende Person</f:facet>
                             <div class="#{ghostnet.rescuer eq null ? 'd-none': ''}">
-                                <h:outputText value="#{ghostnet.rescuer.getRescuerName()}"/>
+                                <h:outputText value="#{ghostnet.rescuer.getName()}"/>
                             </div>
                         </h:column>
                         <h:column>
@@ -44,16 +44,29 @@
                             </div>
                         </h:column>
                         <h:column>
+                            <f:facet name="header">Meldende Person</f:facet>
+                            <div class="#{ghostnet.reporter eq null ? 'd-none': ''}">
+                                <h:outputText value="#{ghostnet.reporter.getName()}"/>
+                            </div>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Telefonnummer</f:facet>
+                            <div class="#{ghostnet.reporter eq null ? 'd-none': ''}">
+                                <h:outputText value="#{ghostnet.reporter.phoneNumber}"/>
+                            </div>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">Aktionen</f:facet>
                             <pe:switch id="switch" value="#{ghostnet.state}">
                                 <pe:case value="reported">
-                                    <h:commandButton id="rescueNet" styleClass="btn btn-primary" action="#{ghostNetController.rescueNet()}" value="Zum Bergen eintragen"/>
+                                    <h:commandButton id="rescueNet" styleClass="btn btn-primary" action="#{ghostNetController.rescueNet(ghostnet.id)}" value="Zum Bergen eintragen"/>
                                 </pe:case>
                                 <pe:case value="recoveryImminent">
-                                    <h:commandButton id="case2button" styleClass="btn btn-success me-1" value="Recovered"/>
-                                    <h:commandButton id="case3button" styleClass="btn btn-danger" value="Lost"/>
+                                    <h:commandButton id="recoverNet" styleClass="btn btn-success me-1" value="Recovered" action="#{ghostNetController.recoverNet(ghostnet.id)}"/>
+                                    <h:commandButton id="lostNet" styleClass="btn btn-danger" value="Lost" action="#{ghostNetController.lostNet(ghostnet.id)}"/>
                                 </pe:case>
                             </pe:switch>
+                            <f:facet name="footer"><h:commandButton id="reportNet" class="btn btn-primary" action="#{ghostNetController.reportNet()}" value="Geisternetz melden" /></f:facet>
                         </h:column>
                     </h:dataTable>
                 </div>

@@ -16,4 +16,14 @@ public class Reporter extends Person implements Serializable {
         super(firstname, lastname, phoneNumber);
     }
 
+    @OneToOne(mappedBy = "reporter", orphanRemoval = true)
+    private GhostNet ghostNet;
+
+    public GhostNet getGhostNet() {
+        return ghostNet;
+    }
+
+    public void setGhostNet(GhostNet ghostNet) {
+        this.ghostNet = ghostNet;
+    }
 }

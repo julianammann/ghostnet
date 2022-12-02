@@ -1,0 +1,39 @@
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+>
+   <ui:define name="content">
+      <div class="p-3">
+         <h:form styleClass="row g-3">
+            <h4>Rescuer</h4>
+            <f:metadata>
+               <f:viewParam name="id" value="#{ghostNetController.selectedNet}"></f:viewParam>
+            </f:metadata>
+            <div class="col-md-6">
+               <label for="firstname" class="form-label">Vorname</label>
+               <h:inputText id="firstname" styleClass="form-control" value="#{ghostNetController.reporter.firstname}"/>
+            </div>
+            <div class="col-md-6">
+               <label for="lastname" class="form-label">Nachname</label>
+               <h:inputText id="lastname" styleClass="form-control" value="#{ghostNetController.reporter.lastname}"/>
+            </div>
+            <div class="mb-3">
+               <label for="phoneNumber" class="form-label">Telefonnummer</label>
+               <h:inputText id="phoneNumber" styleClass="form-control"
+                            value="#{ghostNetController.reporter.phoneNumber}"/>
+            </div>
+            <div class="col-12">
+               <h:commandButton id="submit" value="Submit"
+                                action="#{ghostNetController.addReporter(ghostNetController.reporter, ghostNetController.selectedNet)}"
+                                styleClass="btn btn-primary">
+               </h:commandButton>
+            </div>
+         </h:form>
+      </div>
+   </ui:define>
+</ui:composition>

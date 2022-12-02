@@ -19,11 +19,24 @@ public class GhostNet implements Serializable {
 
     private Rescuer rescuer;
 
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "reporter_id")
+    private Reporter reporter;
+
+    public Reporter getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(Reporter reporter) {
+        this.reporter = reporter;
+    }
+
     @ManyToOne
     @JoinColumn(name = "rescuer_id")
     public Rescuer getRescuer() {
         return rescuer;
     }
+
 
     public void setRescuer(Rescuer rescuer) {
         this.rescuer = rescuer;

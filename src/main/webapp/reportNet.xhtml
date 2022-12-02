@@ -10,6 +10,9 @@
             <h:form styleClass="row g-3">
                 <h4>Geisternetzdaten:</h4>
                 <div class="col-md-6">
+                    <f:metadata>
+                        <f:viewParam name="id" value="#{ghostNetController.selectedNet}"></f:viewParam>
+                    </f:metadata>
                     <label for="lat" class="form-label">Latitude Koordinaten</label>
                     <h:inputText id="lat" styleClass="form-control" value="#{ghostNetController.ghostNet.latitude}"/>
                 </div>

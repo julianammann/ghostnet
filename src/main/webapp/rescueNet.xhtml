@@ -11,6 +11,9 @@
         <div class="p-3">
             <h:form styleClass="row g-3">
                 <h4>Rescuer</h4>
+                <f:metadata>
+                    <f:viewParam name="id" value="#{ghostNetController.selectedNet}"></f:viewParam>
+                </f:metadata>
                 <div class="col-md-6">
                     <label for="firstname" class="form-label">Vorname</label>
                     <h:inputText id="firstname" styleClass="form-control" value="#{ghostNetController.rescuer.firstname}"/>
@@ -24,18 +27,9 @@
                     <h:inputText id="phoneNumber" styleClass="form-control"
                                  value="#{ghostNetController.rescuer.phoneNumber}"/>
                 </div>
-                <div class="mb-3">
-                    <h:selectOneMenu id="select-box" value="#{ghostNetController.selectedNet}">
-                        <f:selectItems value="#{ghostNetController.allGhostNets()}"
-                        var="n"
-                        itemValue="#{n.id}"
-                        itemLabel="Latitude:#{n.latitude},Longitude:#{n.longitude},State:#{n.state}"/>
-                    </h:selectOneMenu>
-                </div>
                 <div class="col-12">
-
                     <h:commandButton id="submit" value="Submit"
-                                     action="#{ghostNetController.addRescuer(ghostNetController.rescuer)}"
+                                     action="#{ghostNetController.addRescuer(ghostNetController.rescuer, ghostNetController.selectedNet)}"
                                      styleClass="btn btn-primary">
                     </h:commandButton>
                 </div>
